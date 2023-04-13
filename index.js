@@ -46,7 +46,7 @@ async function chord() {
 	const ack = listOfNotes[index].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + skala ));
 	
 	// Pre-load the instrument and save it to the global variable
-	await Promise.all(
+	await Promise.all([
 		Soundfont.instrument(audioContext, 'acoustic_grand_piano').then(function (x) {
 			piano = x;
 		});
@@ -54,7 +54,7 @@ async function chord() {
 		Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
 			bass = x;
 		});
-	);
+	]);
 	
 	const playPiano = ack.map(note => piano.play(note));
 	const playBass = bassNote.map(note => bass.play(note));
