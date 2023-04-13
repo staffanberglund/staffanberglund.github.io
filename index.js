@@ -40,25 +40,25 @@ let piano;
 let bass;
 const audioContext = new AudioContext();
 
+// Pre-load the instrument and save it to the global variable
+await Promise.all([
+	Soundfont.instrument(audioContext, 'acoustic_grand_piano').then(function (x) {
+		piano = x;
+	}),
+	
+	Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
+		bass = x;
+	})
+]);
+
 async function chord() {
 	const listOfNotes = await loadNotes("sevenNotes");
 	const index = Math.floor((Math.random() * listOfNotes.length));
 	const ack = listOfNotes[index].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + skala ));
 	
-	// Pre-load the instrument and save it to the global variable
-	await Promise.all([
-		Soundfont.instrument(audioContext, 'acoustic_grand_piano').then(function (x) {
-			piano = x;
-		}),
-		
-		Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
-			bass = x;
-		})
-	]);
-	
 	const playPiano = ack.map(note => piano.play(note));
 	const playBass = bassNote.map(note => bass.play(note));
-	await Promise.all(playPiano, playBass);
+	await Promise.all(playPiano,playBass);
 };
 
 function visaAckord() {
