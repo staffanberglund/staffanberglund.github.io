@@ -48,7 +48,7 @@ const listOfNotes = loadN[sevenNotes];
 	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
 
 //const chNotes = listOfNotes[Math.floor((Math.random() * listOfNotes.length))].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: true})+ " lydian dominant"));
-const ack = listOfNotes[Math.floor((Math.random() * listOfNotes.length))].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false})+ " half-whole diminished"));
+const ack = listOfNotes[Math.floor((Math.random() * listOfNotes.length))].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false})+ " lydian dominant"));
 //const range = Range.chromatic([grundton, grundton + 12]);
 //const ack =  
 const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
