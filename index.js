@@ -31,19 +31,19 @@ async function loadNotes(voicing) {
 };
 
 const skala = ' ' + 'lydian dominant';
+const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
+const bassNote = [grundton - 12];
+const bastonNote = Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))
+
+// Define the instrument and audio context as global variables
+let piano;
+let bass;
+const audioContext = new AudioContext();
 
 async function chord() {
 	const listOfNotes = await loadNotes("sevenNotes");
 	const index = Math.floor((Math.random() * listOfNotes.length));
 	const ack = listOfNotes[index].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + skala ));
-	const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
-	const bassNote = [grundton - 12];
-	const bastonNote = Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))
-
-	// Define the instrument and audio context as global variables
-	let piano;
-	let bass;
-	const audioContext = new AudioContext();
 	
 	// Pre-load the instrument and save it to the global variable
 	await Promise.all(
@@ -54,7 +54,7 @@ async function chord() {
 		Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
 			bass = x;
 		});
-	)
+	);
 	
 	const playPiano = ack.map(note => piano.play(note));
 	const playBass = bassNote.map(note => bass.play(note));
