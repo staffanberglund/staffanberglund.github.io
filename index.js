@@ -36,14 +36,13 @@ const listOfNotes_old = [
 	[4,8,11,15]
 ];
 
-async function loadNotes() {
+async function loadNotes(voicing) {
   const response = await fetch('chords.json');
   const notes = await response.json();
-  return notes;
+  return notes[voicing];
 }
 
-const loadN = loadNotes();
-const listOfNotes = loadN["sevenNotes"];
+const listOfNotes = await loadNotes("sevenNotes");
 
 	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
 
