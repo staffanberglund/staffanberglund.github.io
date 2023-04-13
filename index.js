@@ -42,7 +42,7 @@ async function loadNotes(voicing) {
   return notes[voicing];
 }
 
-const listOfNotes = await loadNotes("sevenNotes");
+const listOfNotes = loadNotes("sevenNotes");
 
 	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
 
