@@ -24,18 +24,18 @@ let ters = grundton + slump() + 3;
 
 let dur = ters - grundton - 3 // 1 om dur, 0 annars
 
-const listOfNotes_old = [
-//	[7,3,5],
-//	[3,7,9],
-//	[7,3,13],
-//	[3,13,7,9],
-//	[7,9,3,5],
-//	[7,9,3,13],
-//	[7,1,3,5],
-//	[3,5,7,9],
-	[4,8,11,15]
+const listOfNotes = [
+	[7,3,5],
+	[3,7,9],
+	[7,3,13],
+	[3,13,7,9],
+	[7,9,3,5],
+	[7,9,3,13],
+	[7,1,3,5],
+	[3,5,7,9]
+//	[4,8,11,15]
 ];
-
+/*
 function loadNotes() {
   const response = fetch('chords.json');
   const notes = response.json();
@@ -44,7 +44,7 @@ function loadNotes() {
 
 const loadN = loadNotes();
 const listOfNotes = loadN[sevenNotes];
-
+*/
 	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
 
 //const chNotes = listOfNotes[Math.floor((Math.random() * listOfNotes.length))].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: true})+ " lydian dominant"));
