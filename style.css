@@ -111,18 +111,6 @@ table {margin-left: auto; margin-right: auto; padding: 5px; }
 
 IMG.center { display:block; margin-left:auto; margin-right:auto; }
 
-@font-face { font-family: 'Garamond Premier Pro';  src: url(".fonts/GaramondPremierPro/GaramondPremrPro.otf")/*url("http://staffan-nas/hemsida/.fonts/GaramondPremierPro/GaramondPremrPro.otf")*/  format("opentype"); }
-@font-face { font-family: 'Garamond Premier Pro'; font-weight: bold; src: url(".fonts/GaramondPremierPro/GaramondPremrPro-Bd.otf") format("opentype"); }
-@font-face { font-family: 'Garamond Premier Pro'; font-style: italic; src: url(".fonts/GaramondPremierPro/GaramondPremrPro-It.otf") format("opentype"); }
-@font-face { font-family: 'Garamond Title'; src: url(".fonts/GaramondPremierPro/GaramondPremrPro-Disp.otf") format("opentype"); }
-@font-face { font-family: 'Garamond Title'; font-weight: bold; src: url(".fonts/GaramondPremierPro/GaramondPremrPro-BdDisp.otf") format("opentype"); }
-@font-face { font-family: 'Futura'; src: url(".fonts/Futura/FuturaBT-Medium.otf") format("opentype"); }
-@font-face { font-family: 'Futura'; font-weight: bold; src: url(".fonts/Futura/FuturaBT-Heavy.otf") format("opentype"); }
-@font-face { font-family: 'Adobe Caslon Pro';  src: url(".fonts/ACaslonPro/ACaslonPro-Regular.otf") format("opentype"); }
-@font-face { font-family: 'Adobe Caslon Pro'; font-weight: bold; src: url(".fonts/ACaslonPro/ACaslonPro-Bold.otf") format("opentype"); }
-@font-face { font-family: 'Adobe Caslon Pro'; font-style: italic; src: url(".fonts/ACaslonPro/ACaslonPro-Italic.otf") format("opentype"); }
-
-
 .button,
 button,
 input[type="submit"],
