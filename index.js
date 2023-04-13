@@ -36,9 +36,9 @@ const listOfNotes_old = [
 	[4,8,11,15]
 ];
 
-function loadNotes() {
-  const response = fetch('chords.json');
-  const notes = response.json();
+async function loadNotes() {
+  const response = await fetch('chords.json');
+  const notes = await response.json();
   return notes;
 }
 
@@ -70,10 +70,10 @@ Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
 	bass = x;
 });
 
-function chord() {
-    const playPiano = ack.map(note => piano.play(note));
-    const playBass = bassNote.map(note => bass.play(note));
-    Promise.all(playPiano, playBass);
+async function chord() {
+	const playPiano = ack.map(note => piano.play(note));
+	const playBass = bassNote.map(note => bass.play(note));
+	Promise.all(playPiano, playBass);
   };
 
 function visaAckord() {
