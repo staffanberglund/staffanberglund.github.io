@@ -46,29 +46,19 @@ async function chord() {
 	const audioContext = new AudioContext();
 	
 	// Pre-load the instrument and save it to the global variable
-	await Promise.all([
+	await Promise.all(
 		Soundfont.instrument(audioContext, 'acoustic_grand_piano').then(function (x) {
 			piano = x;
-		}),
+		});
+		
 		Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
 			bass = x;
-		})
-	]);
-
-	// Play the notes
-	const playPiano = ack.map(note => {
-		return Soundfont.instrument(audioContext, 'acoustic_grand_piano').then(function (x) {
-			return x.play(note);
 		});
-	});
-
-	const playBass = bassNote.map(note => {
-		return Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
-			return x.play(note);
-		});
-	});
-
-	await Promise.all(playPiano.concat(playBass));
+	)
+	
+	const playPiano = ack.map(note => piano.play(note));
+	const playBass = bassNote.map(note => bass.play(note));
+	await Promise.all(playPiano, playBass);
 };
 
 function visaAckord() {
