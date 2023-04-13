@@ -43,7 +43,7 @@ async function loadNotes() {
 }
 
 const loadN = loadNotes();
-const listOfNotes = loadN[sevenNotes];
+const listOfNotes = loadN["sevenNotes"];
 
 	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
 
