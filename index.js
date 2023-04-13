@@ -49,11 +49,11 @@ async function chord() {
 	await Promise.all([
 		Soundfont.instrument(audioContext, 'acoustic_grand_piano').then(function (x) {
 			piano = x;
-		});
+		}),
 		
 		Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
 			bass = x;
-		});
+		})
 	]);
 	
 	const playPiano = ack.map(note => piano.play(note));
