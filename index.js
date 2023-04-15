@@ -41,7 +41,7 @@ let bass;
 const audioContext = new AudioContext();
 
 // Pre-load the instrument and save it to the global variable
-await Promise.all([
+Promise.all([
 	Soundfont.instrument(audioContext, 'acoustic_grand_piano').then(function (x) {
 		piano = x;
 	}),
