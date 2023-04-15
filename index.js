@@ -30,6 +30,8 @@ async function loadNotes(voicing) {
   return notes[voicing];
 };
 
+const listaSkalor = ['lydian dominant', 'mixolydian', 'dorian', 'lydian'];
+
 const skala = ' ' + 'lydian dominant';
 const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
 const bassNote = [grundton - 12];
