@@ -32,7 +32,7 @@ async function loadNotes(voicing) {
 
 const listaSkalor = ['lydian dominant', 'mixolydian', 'dorian', 'lydian'];
 
-const skala = ' ' + listaSkalor[Math.floor(Math.random() * listOfNotes.length)];
+const skala = ' ' + listaSkalor[Math.floor(Math.random() * listSkalor.length)];
 const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
 const bassNote = [grundton - 12];
 const bastonNote = Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))
