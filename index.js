@@ -58,7 +58,7 @@ async function chord() {
 	const index = Math.floor((Math.random() * listOfNotes.length));
 	const ack = listOfNotes[index].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + skala ));
 	
-	Promise.all(	function visaAckord() {
+	.then(	function visaAckord() {
 			document.getElementById('midi').innerHTML = bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
 		}
 	);
