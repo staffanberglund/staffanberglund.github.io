@@ -63,6 +63,6 @@ async function chord() {
 	await Promise.all(playPiano,playBass);
 };
 
-function visaAckord() {
-	document.getElementById('midi').innerHTML = /*filter(["C", "D", "E"])(["c2", "c#2", "d2", "c3", "c#3", "d3"]);// */bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
+async function visaAckord() {
+	await document.getElementById('midi').innerHTML = bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
 };
