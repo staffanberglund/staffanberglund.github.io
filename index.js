@@ -64,5 +64,5 @@ async function chord() {
 };
 
 async function visaAckord() {
-	await document.getElementById('midi').innerHTML = bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
+	document.getElementById('midi').innerHTML = await  bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
 };
