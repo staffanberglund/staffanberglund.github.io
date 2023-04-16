@@ -58,11 +58,12 @@ async function chord() {
 	const index = Math.floor((Math.random() * listOfNotes.length));
 	const ack = listOfNotes[index].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + skala ));
 	
+	function visaAckord() {
+		document.getElementById('midi').innerHTML = bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
+	};
+
 	const playPiano = ack.map(note => piano.play(note));
 	const playBass = bassNote.map(note => bass.play(note));
 	await Promise.all(playPiano,playBass);
 };
 
-async function visaAckord() {
-	document.getElementById('midi').innerHTML = await  bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
-};
