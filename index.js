@@ -60,8 +60,8 @@ async function chord() {
 	
 	Promise.all(	function visaAckord() {
 			document.getElementById('midi').innerHTML = bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
-		};
-	)
+		}
+	);
 
 	const playPiano = ack.map(note => piano.play(note));
 	const playBass = bassNote.map(note => bass.play(note));
