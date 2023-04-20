@@ -2,7 +2,7 @@ function slump() {
 	return Math.floor(Math.random() * 2); // 0 eller 1
 };
 
-function filter(set) {
+function filterTonal(set) {
   const isIncluded = Tonal.PcSet.isNoteIncludedIn(set);
   return function(notes) {
     return notes.filter(isIncluded);
@@ -14,26 +14,70 @@ function scale(set, range) {
     return r => scale(set, r);
   } else {
     const notes = Tonal.Range.chromatic(range);
-    const filtered = filter(set)(notes);
+    const filtered = filterTonal(set)(notes);
     return filtered;
   }
 };
 
-let grundton = 48 + Math.floor((Math.random() * 11) + 1);
-let ters = grundton + slump() + 3;
+Tonal.ScaleType.add(["1P", "2m", "3M", "4P", "5P", "6M", "7m"], "mixolydian b2");
+Tonal.ScaleType.add(["1P", "2A", "3M", "4P", "5P", "6M", "7m"], "mixolydian #2");
+Tonal.ScaleType.add(["1P", "2A", "3M", "4A", "5P", "6M", "7m"], "lydian dominant #2");
 
-let dur = ters - grundton - 3 // 1 om dur, 0 annars	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
+const commonScales = 
+	[
+	"ionian",
+	"aeolian",
+	"melodic minor",
+	"harmonic minor",
+	"diminished",
+	"dorian",
+	"lydian",
+	"mixolydian",
+	"phrygian",
+	"locrian"
+	];
+
+//let ters = grundton + slump() + 3;
+
+//let dur = ters - grundton - 3 // 1 om dur, 0 annars	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
+let bassNote;
+let bastonNote;
+let grundton;
+let ack;
+let skalaVar;
+
+async function ackord() {Tonal
+	document.getElementById('visaAckord').innerHTML = '';
+	document.getElementById('visaSkala').innerHTML = '';
+
+	grundton = 48 + Math.floor((Math.random() * 11) + 1);
+	//const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
+	bassNote = [grundton - 12];
+	bastonNote = Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))
+
+	const [skalaResponse, ackordResponse] = await Promise.all([
+		fetch('scales.json'),
+		fetch('chords.json')
+	]);
+	
+	const skala = await skalaResponse.json();			
+	const ackord = await ackordResponse.json();
+        const index1 = Math.floor((Math.random() * skala.length));
+	skalaVar = skala[index1];
 
 
-const listaSkalor = ['lydian dominant', 'mixolydian', 'dorian', 'lydian'];
-
-const skala = ' ' + listaSkalor[Math.floor(Math.random() * listaSkalor.length)];
-const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
-const bassNote = [grundton - 12];
-const bastonNote = Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))
-
-const interval34 = Tonal.Interval.distance(Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + skala).notes[2],Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + skala).notes[3]); // Intervall mellan ters och kvart
-
+        let voicings = ackord["sevenNotes"];
+        const index2 = Math.floor((Math.random() * voicings.length));	
+	const interval34 = Tonal.Interval.distance(Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[2],Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[3]); // Intervall mellan ters och kvart
+	voicings[index2] = voicings[index2].filter(x => interval34 == "2m" ? x != 11 : x ) ;
+	ackPC = voicings[index2].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: true}) + ' ' + skalaVar));
+	voicingFirst = Tonal.Scale.degrees(Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + ' ' + skalaVar)(voicings[index2][0]);
+	chromScale = Tonal.Range.chromatic([voicingFirst,Tonal.Note.transpose(voicingFirst,'7M')]);
+	ack = filterTonal(ackPC)(chromScale);
+	console.log(voicings[index2]);
+	//ack = voicings[index2].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + ' ' + skalaVar ));
+	return [ack, skalaVar];
+};
 
 // Define the instrument and audio context as global variables
 let piano;
@@ -49,41 +93,29 @@ Promise.all([
 	Soundfont.instrument(audioContext, 'acoustic_bass').then(function (x) {
 		bass = x;
 	})
-//	fetch('chords.json')
-//		.then(response => response.json())
-//		.then(notes => {
-//			const listOfNotes = notes["sevenNotes"];
-//			const index = Math.floor((Math.random() * listOfNotes.length));
-//			const skala = listaSkalor[Math.floor(Math.random() * listaSkalor.length)];
-//			const grundton = 48 + Math.floor((Math.random() * 11) + 1);
-//			const ack = listOfNotes[index].map(note => Tonal.Note.pitchClass(note + Tonal.Interval.fromSemitones(grundton) + Tonal.Scale.get(skala).intervals[note % 7]));
-//			ackord = ack;
-//		})
 ]);
 
-let ackordPromise = fetch('chords.json')
-        .then(response => response.json())
-        .then(notes => {
-                const listOfNotes = notes["sevenNotes"];
-                const index = Math.floor((Math.random() * listOfNotes.length));
-		const ack2 = listOfNotes[index].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + skala ));
-		console.log(Tonal.Midi.midiToNoteName(grundton) + skala);
-		console.log(listOfNotes[index]);
-		console.log(ack2);
-		console.log(interval34);
-
-                return ack2;
-        });
 
 async function chord() {
-        const ack = await ackordPromise;
-        const playPiano = await ack.map(note => piano.play(note));
+	if (!ack) {
+	await ackord();
+	}
+
+        const playPiano = ack.map(note => piano.play(note));
 	const playBass = bassNote.map(note => bass.play(note));
 
         await Promise.all(playPiano,playBass);
 };
 
 async function visaAckord() {
-        const ack = await ackordPromise;
-	document.getElementById('midi').innerHTML = await bastonNote + ' ' + ack.map(Tonal.Note.pitchClass).join(' ');
-}
+	if (!ack) {
+	await ackord();
+	}
+
+	const possibleScales = Tonal.Scale.detect(ack,{tonic: bastonNote});
+	const psTypes = possibleScales.map(x => Tonal.Scale.get(x).type);
+	const likelyScale = psTypes.filter(x => commonScales.includes(x));
+
+	document.getElementById('visaAckord').innerHTML = await /*Tonal.Scale.detect([Tonal.Midi.midiToNoteName(grundton)].concat(ack) )[0] + '  ' +[Tonal.Midi.midiToNoteName(grundton)].concat(ack) ;*/ Tonal.Midi.midiToNoteName(grundton) + ' ' + ack./*map(Tonal.Note.pitchClass).*/join(' ');
+	document.getElementById('visaSkala').innerHTML = await Tonal.Chord.detect([bastonNote].concat(ack),{assumePerfectFifth: true}).join(', ') + '<br><br> (slumpad skala: ' + bastonNote + ' ' + skalaVar + ')';
+};

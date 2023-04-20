@@ -4,20 +4,25 @@
 		<meta charset="UTF-8">
 		<LINK REL="STYLESHEET" TYPE="text/css" href="style.css">
 		<!--<style> body { width:630px; } </style>-->
-		<title>JavaScript testing</title>
+		<title>TESTING JavaScript</title>
 		<script src='tonal.min.js'></script>
 		<script src="soundfont-player.js"></script>
-		<script src='index.js'></script>
 	</head>
 
 	<body>
 
-		<p style="text-align: center;" id='chordButton'>
-			<button style="text-align: center;" class="button" onclick="chord()">Ackord</button>
+		<p style="text-align: center;" id='chordButtonPar'>
+			<button style="text-align: center;" class="button" id="chordButton" onclick="chord()">Ackord</button>
 		</p>
-		<p style="text-align: center;" id='midi'>
+		<p style="text-align: center;" id='visaButton'>
 			<button style="text-align: center;" class="button" onclick="visaAckord()">Visa</button>
 		</p>
+		<p style="text-align: center;" id='reload'>
+			<button style="text-align: center;" class="button" id="reloadButton" onclick="ackord()">Uppdatera</button>
+		</p>
+		<p style="text-align: center;" id='visaAckord'> </p>
+		<p style="text-align: center;" id='visaSkala'> </p>
 
 	</body>
+		<script src='index.js'></script>
 </html>
