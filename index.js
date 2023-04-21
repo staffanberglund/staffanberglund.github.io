@@ -37,9 +37,6 @@ const commonScales =
 	"locrian"
 	];
 
-//let ters = grundton + slump() + 3;
-
-//let dur = ters - grundton - 3 // 1 om dur, 0 annars	//?	mix = mod9.map(Tonal.Scale.steps("B3 mixolydian")); 	?
 let bassNote;
 let bastonNote;
 let grundton;
@@ -51,9 +48,9 @@ async function ackord() {Tonal
 	document.getElementById('visaSkala').innerHTML = '';
 
 	grundton = 48 + Math.floor((Math.random() * 11) + 1);
-	//const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
+	const tonart = Tonal.Key.majorKey(Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))).alteration;
 	bassNote = [grundton - 12];
-	bastonNote = Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton))
+	bastonNote = Tonal.Note.pitchClass(Tonal.Midi.midiToNoteName(grundton));
 
 	const [skalaResponse, ackordResponse] = await Promise.all([
 		fetch('scales.json'),
@@ -69,12 +66,15 @@ async function ackord() {Tonal
         let voicings = ackord["sevenNotes"];
         const index2 = Math.floor((Math.random() * voicings.length));	
 	const interval34 = Tonal.Interval.distance(Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[2],Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[3]); // Intervall mellan ters och kvart
-	voicings[index2] = voicings[index2].filter(x => interval34 == "2m" ? x != 11 : x ) ;
-	ackPC = voicings[index2].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: true}) + ' ' + skalaVar));
-	voicingFirst = Tonal.Scale.degrees(Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + ' ' + skalaVar)(voicings[index2][0]);
-	chromScale = Tonal.Range.chromatic([voicingFirst,Tonal.Note.transpose(voicingFirst,'7M')]);
-	ack = filterTonal(ackPC)(chromScale);
-	console.log(voicings[index2]);
+	voicings[index2] = voicings[index2].filter(x => interval34 == "2m" ? x != 11 : x ) ; // Om durters & ren kvart, ta bort 11 från ackordet
+	const interval12 = Tonal.Interval.distance(Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[0],Tonal.Scale.get(Tonal.Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[1]); // Intervall mellan grundton & nia (tvåa)
+	voicings[index2] = voicings[index2].filter(x => interval12 == "2m" ? x != 9 : x ) ; // Om moll och b9, ta bort nia
+	ackPC = voicings[index2].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {sharps: tonart > 0, pitchClass: true}) + ' ' + skalaVar));
+	voicingFirst = Tonal.Scale.degrees(Tonal.Midi.midiToNoteName(grundton, {sharps: tonart > 0, pitchClass: false}) + ' ' + skalaVar)(voicings[index2][0]);
+	ack = Tonal.Scale.rangeOf(ackPC)(voicingFirst,Tonal.Note.transpose(voicingFirst,'7M'));
+	//chromScale = Tonal.Range.chromatic([voicingFirst,Tonal.Note.transpose(voicingFirst,'7M')]);
+	//ack = filterTonal(ackPC)(chromScale);
+	//console.log(voicings[index2]);
 	//ack = voicings[index2].map(Tonal.Scale.degrees( Tonal.Midi.midiToNoteName(grundton, {pitchClass: false}) + ' ' + skalaVar ));
 	return [ack, skalaVar];
 };
