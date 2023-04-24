@@ -3,15 +3,17 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<LINK REL="STYLESHEET" TYPE="text/css" href="style.css">
-		<style> body { width:300px; } </style>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+		<link REL="stylesheet" TYPE="text/css" href="style.css">
+		<style> body { width:550px; } </style>
 		<title>TESTING JavaScript</title>
-		<script src='tonal.min.js'></script>
+		<script src='im-tonal.js'></script>
 		<script src="soundfont-player.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>
 	</head>
 
 	<body>
-
+		<div class="kol" style="margin: auto">
 		<p style="text-align: center;" id='chordButtonPar'>
 			<button style="text-align: center;" class="button" id="chordButton" onclick="chord()">Ackord</button>
 		</p>
@@ -22,8 +24,10 @@
 			<button style="text-align: center;" class="button" id="reloadButton" onclick="ackord()">Uppdatera</button>
 		</p>
 		<p style="text-align: center;" id='visaAckord'> </p>
-		<p style="text-align: center;" id='visaSkala'> </p>
+		</div>
 
+		<div id="output" class="kol" style="margin: auto"></div>
+		<p style="text-align: center;" id='visaSkala'> </p>
 	</body>
-		<script src='index.js'></script>
+		<script src='index.js' ></script>
 </html>
