@@ -120,9 +120,9 @@ async function visaAckord() {
 
 };
 
-/*------------------------------*/
-/* 	Rita noter		*/
-/*------------------------------*/
+/*----------------------*/
+/* 	Rita noter	*/
+/*----------------------*/
 
 const { System, Factory, EasyScore } = Vex.Flow;
 
