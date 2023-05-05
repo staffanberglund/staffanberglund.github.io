@@ -5,63 +5,133 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 		<link REL="stylesheet" TYPE="text/css" href="../style.css">
-		<style> body { width:550px; } </style>
+		<style> body { width:90vw; } </style>
 		<title>Intonation</title>
 		<script src='../im-tonal.js'></script>
 		<script src="../soundfont-player.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>
+		<!--<script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>-->
 	</head>
 	<body>
-
+<!--
 <div class="dropdown">
   <button onclick="myFunction()" class="dropbtn">Ljud</button>
   <div id="myDropdown" class="dropdown-content">
     <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
     <a href="#support">Support</a>
     <a href="#tools">Tools</a>
   </div>
 </div>
-		<div class="slidecontainer">
+-->
+<div class="main">
+<form>  
+<select class="lista2" id = "instrumentLista" onchange = "väljInstrument()" >  
+<!--
+	<option class="listaKnapp" > piano </option>  
+	<option class="listaKnapp"> voice </option>  
+-->
+<option class="listaKnapp">acoustic_grand_piano</option>
+<option class="listaKnapp">bright_acoustic_piano</option>
+<option class="listaKnapp">electric_grand_piano</option>
+<option class="listaKnapp">honkytonk_piano</option>
+<option class="listaKnapp">electric_piano_1</option>
+<option class="listaKnapp">electric_piano_2</option>
+<option class="listaKnapp">acoustic_guitar_nylon</option>
+<option class="listaKnapp">acoustic_guitar_steel</option>
+<option class="listaKnapp">electric_guitar_jazz</option>
+<option class="listaKnapp">electric_guitar_clean</option>
+<option class="listaKnapp">slap_bass_1</option>
+<option class="listaKnapp">slap_bass_2</option>
+<option class="listaKnapp">synth_bass_1</option>
+<option class="listaKnapp">synth_bass_2</option>
+<option class="listaKnapp">violin</option>
+<option class="listaKnapp">viola</option>
+<option class="listaKnapp">cello</option>
+<option class="listaKnapp">string_ensemble_1</option>
+<option class="listaKnapp">string_ensemble_2</option>
+<option class="listaKnapp">synth_strings_1</option>
+<option class="listaKnapp">synth_strings_2</option>
+<option class="listaKnapp">choir_aahs</option>
+<option class="listaKnapp">voice_oohs</option>
+<option class="listaKnapp">synth_choir</option>
+<option class="listaKnapp">trumpet</option>
+<option class="listaKnapp">trombone</option>
+<option class="listaKnapp">tuba</option>
+<option class="listaKnapp">muted_trumpet</option>
+<option class="listaKnapp">french_horn</option>
+<option class="listaKnapp">brass_section</option>
+<option class="listaKnapp">synth_brass_1</option>
+<option class="listaKnapp">synth_brass_2</option>
+<option class="listaKnapp">soprano_sax</option>
+<option class="listaKnapp">alto_sax</option>
+<option class="listaKnapp">tenor_sax</option>
+<option class="listaKnapp">oboe</option>
+<option class="listaKnapp">english_horn</option>
+<option class="listaKnapp">bassoon</option>
+<option class="listaKnapp">clarinet</option>
+<option class="listaKnapp">lead_1_square</option>
+<option class="listaKnapp">lead_2_sawtooth</option>
+<option class="listaKnapp">lead_3_calliope</option>
+<option class="listaKnapp">lead_4_chiff</option>
+<option class="listaKnapp">lead_5_charang</option>
+<option class="listaKnapp">lead_6_voice</option>
+<option class="listaKnapp">lead_7_fifths</option>
+<option class="listaKnapp">lead_8_bass__lead</option>
+</select>  
+</form>
+		<div style="margin-top:5em" class="slidecontainer">
 			<div class="arrow-buttons">
-				<button  class="arrow-left" id="leftArrowK" onclick="intMinus()">&#x25C0;</button>
+				<button  class="arrow-left" id="leftArrowK" onclick="intMinus(2)">&#x25C0;</button>
 			</div>
 			<div class="slider-div">
-				<input  id="sliderK" class="slider" type="range" min="-1" max="1" step="0.01" oninput="sliderChange(67,this.value)">
+				<input  id="sliderK" class="slider" type="range" min="-1" max="1" step="0.01" oninput="sliderChange(2,this.value)">
 				<output id="output"></output>
 			</div>
 			<div class="arrow-buttons">
-				<button class="arrow-left" id="rightArrowK" onclick="intPlus()">&#x25B6;</button>
+				<button class="arrow-left" id="rightArrowK" onclick="intPlus(2)">&#x25B6;</button>
 			</div>
 		</div>
 		<div class="slidecontainer">
 			<div class="arrow-buttons">
-				<button  class="arrow-left" id="leftArrow" onclick="intMinus()">&#x25C0;</button>
-			</div>
-			<div class="slider-div">
-				<input  id="slider" class="slider" type="range" min="-1" max="1" step="0.01" oninput="sliderChange(64,this.value)">
-				<output id="output"></output>
-			</div>
-			<div class="arrow-buttons">
-				<button class="arrow-left" id="rightArrow" onclick="intPlus()">&#x25B6;</button>
-			</div>
+			<button  class="arrow-left" id="leftArrow" onclick="intMinus(1)">&#x25C0;</button>
 		</div>
+		<div class="slider-div">
+			<input  id="slider" class="slider" type="range" min="-1" max="1" step="0.01" oninput="sliderChange(1,this.value)">
+			<output id="output"></output>
+		</div>
+		<div class="arrow-buttons">
+			<button class="arrow-left" id="rightArrow" onclick="intPlus(1)">&#x25B6;</button>
+		</div>
+	</div>
 
-		<br>
-		<div class="kol" style="margin: auto">
-		<p style="text-align: center;" id='chordButtonPar'>
-			<button style="text-align: center;" class="button" id="chordButton" onclick="chord()">Spela</button>
-		</p>
-		<p style="text-align: center;">
-			<button style="text-align: center;" class="button" id="visaButton" onclick="visaAckord()">Visa</button>
-		</p>
-			<p style="text-align: center;"id="visaAckord">
+	<br>
+	<div class="kol" style="margin: auto">
+	<p style="text-align: center;" id='chordButtonPar'>
+		<button style="text-align: center;" class="button" id="chordButton" onclick="chord()">Spela</button>
+	</p>
+	<p style="text-align: center;">
+		<button style="text-align: center;" class="button" id="visaButton" onclick="togglePar()">Visa</button>
+	</p>
+		<div id="visaAckord" style="display: none">
+			<p >
+				<table style="text-align: left; width: 120%">
+					<tr>
+						<th>Avstånd i cent</th>	<th id="tTers">Ters</th><th id="tKvint">Kvint</th>
+					</tr>
+					<tr style="display: table-row" id='ren'>
+						<td>Ren stämning:</td>	<td id="renTers"></td>	<td id="renKvint"></td>
+					</tr>
+					<tr style="display: none" id='lik'>
+						<td>Liksvävig:</td>	<td id="likTers"></td>	<td id="likKvint"></td>
+					</tr>
+				</table>
 			</p>
+		<p style="text-align: center;">
+			<button style="text-align: center;" class="button" id="tempButton" onclick="toggleTemp()">Temperatur</button>
+		</p>
 		</div>
-	</body>
-		<script src='intonation.js' ></script>
+	</div>
+    		<a href="../index.html">Tillbaka till ackord</a>
+</div>
+</body>
+	<script src='intonation.js' ></script>
 </html>
