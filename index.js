@@ -25,6 +25,7 @@ let renderedBool;
 
 Tonal.ScaleType.add(["1P", "2m", "3M", "4P", "5P", "6M", "7m"], "mixolydian b2");
 Tonal.ScaleType.add(["1P", "2A", "3M", "4P", "5P", "6M", "7m"], "mixolydian #2");
+Tonal.ScaleType.add(["1P", "2m", "3M", "4P", "5P", "6m", "7m"], "mixolydian b2 b6");
 Tonal.ScaleType.add(["1P", "2A", "3M", "4A", "5P", "6M", "7m"], "lydian dominant #2");
 
 
