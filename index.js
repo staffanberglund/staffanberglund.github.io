@@ -129,7 +129,7 @@ const { System, Factory, EasyScore } = Vex.Flow;
 const vf = new Factory({
 	renderer: {
 		elementId: 'output',
-		width: 500,
+		width: 250,
 		height: 250
 	},
 });
