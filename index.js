@@ -66,10 +66,8 @@ async function ackord() {
 
         let voicings = ackord["sevenNotes"];
         const index2 = Math.floor((Math.random() * voicings.length));	
-	const interval34 = Interval.distance(Scale.get(Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[2],Scale.get(Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[3]); // Intervall mellan ters och kvart
-	voicings[index2] = voicings[index2].filter(x => interval34 == "2m" ? x != 11 : x ) ; // Om durters & ren kvart, ta bort 11 från ackordet
-	const interval23 = Interval.distance(Scale.get(Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[1],Scale.get(Midi.midiToNoteName(grundton) + ' ' + skalaVar).notes[2]); // Intervall mellan grundton & nia (tvåa)
-	voicings[index2] = voicings[index2].filter(x => interval23 == "2M" ? x != 9 : x ) ; // Om moll och b9, ta bort nia
+	voicings[index2] = voicings[index2].filter(x => ( Tonal.Scale.get(skalaVar).intervals[2] ==  "3M" && Tonal.Scale.get(skalaVar).intervals[3] ==  "4P" ) ? x != 11 : x ) ; // Om durters & ren kvart, ta bort 11 från ackordet
+	voicings[index2] = voicings[index2].filter(x => ( Tonal.Scale.get(skalaVar).intervals[1] ==  "2m" && Tonal.Scale.get(skalaVar).intervals[2] ==  "3m" ) ? x != 9 : x ) ; // Om moll och b9, ta bort nia
 	ackPC = voicings[index2].map(Scale.degrees( Midi.midiToNoteName(grundton, {sharps: tonart > 0, pitchClass: true}) + ' ' + skalaVar));
 	voicingFirst = Scale.degrees(Midi.midiToNoteName(grundton, {sharps: tonart > 0, pitchClass: false}) + ' ' + skalaVar)(voicings[index2][0]);
 	ack = Scale.rangeOf(ackPC)(voicingFirst,Note.transpose(voicingFirst,'7M'));
