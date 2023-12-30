@@ -1,3 +1,5 @@
+function main() {
+
 const { pitchClass, octave } = Tonal.Note;
 
 const { midiToNoteName,  } = Tonal.Midi;
@@ -171,3 +173,7 @@ async function visaNoter() {
 	
 	vf.draw();
 };
+
+}
+
+main();
