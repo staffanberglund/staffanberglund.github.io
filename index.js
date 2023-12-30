@@ -1,4 +1,13 @@
-function main() {
+document.addEventListener("DOMContentLoaded", function() {
+    // Get references to the buttons
+    const chordButton = document.getElementById("chordButton");
+    const visaButton = document.getElementById("visaButton");
+    const reloadButton = document.getElementById("reloadButton");
+
+    // Attach event listeners to the buttons
+    chordButton.addEventListener("click", chord);
+    visaButton.addEventListener("click", visaAckord);
+    reloadButton.addEventListener("click", ackord);
 
 const { pitchClass, octave } = Tonal.Note;
 
@@ -174,6 +183,5 @@ async function visaNoter() {
 	vf.draw();
 };
 
-}
 
-main();
+});
