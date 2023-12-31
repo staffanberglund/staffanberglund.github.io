@@ -1320,7 +1320,7 @@ var Tonal = (() => {
     var Ho = f("Scale.scale", "Scale.get", I);
     function Ko(t, n = {}) {
         let e = gt(t),
-            r = s(n.tonic ?? t[0] ?? ""),
+            r = s((n.tonic !== undefined && n.tonic !== null) ? n.tonic : (t[0] !== undefined && t[0] !== null) ? t[0] : ""),
             o = r.chroma;
         if (o === void 0) return [];
         let a = e.split("");
