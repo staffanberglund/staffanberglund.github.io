@@ -84,6 +84,8 @@ async function ackord() {
 /*------------------------------*/
 let piano;
 let bass;
+
+const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 
 Promise.all([
