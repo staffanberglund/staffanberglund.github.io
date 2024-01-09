@@ -114,7 +114,7 @@ async function visaAckord() {
 	await ackord();
 	}
 
-	document.getElementById('visaAckord').innerHTML = await '<br>' + Chord.detect([bastonNote].concat(ack),{assumePerfectFifth: true}).join(', ');
+	document.getElementById('visaAckord').innerHTML = await '<br>' + Chord.detect([bastonNote].concat(ack),{assumePerfectFifth: true})[0];
 	document.getElementById('visaSkala').innerHTML = await '(slumpad skala: ' + bastonNote + ' ' + skalaVar + ')';
 	if (renderedBool == 0) {
 		visaNoter();
