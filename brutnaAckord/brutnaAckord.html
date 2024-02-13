@@ -4,20 +4,19 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-		<link REL="stylesheet" TYPE="text/css" href="style.css">
-		<title>Staffans gehörsapp</title>
-		<script src='im-tonal.js'></script>
-		<script src="soundfont-player.js"></script>
+		<link REL="stylesheet" TYPE="text/css" href="../style.css">
+		<title>Brutna ackord</title>
+		<script src='../im-tonal.js'></script>
+		<script src="../soundfont-player.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>
 	</head>
-
 	<body>
 		<div class="kol" style="margin: auto">
+			<p style="text-align: center;" id='firstNote'>
+			    <button style="text-align: center;" class="button" id="firstNote">Första ton</button>
+			</p>
 			<p style="text-align: center;" id='chordButtonPar'>
 			    <button style="text-align: center;" class="button" id="chordButton">Spela</button>
-			</p>
-			<p style="text-align: center;" id='visaButton'>
-			    <button style="text-align: center;" class="button" id="visaButton">Visa</button>
 			</p>
 			<p style="text-align: center;" id='reload'>
 			    <button style="text-align: center;" class="button" id="reloadButton">Uppdatera</button>
@@ -27,18 +26,10 @@
 
 		<div id="output" class="kol" style="margin: auto"></div>
 		<p style="text-align: center; margin: auto" id='visaSkala'> </p>
-   		<div style="font-family: Lato; text-align:center">
-			<p style="text-align: center;" id='reload'>
-				<a href="brutnaAckord/brutnaAckord.html">Öva brutna ackord</a>
-			</p>
-		</div>
-		<p style="text-align: center; margin: auto" id='visaSkala'> </p>
-   		<div style="font-family: Lato; text-align:center">
-			<p style="text-align: center;" id='reload'>
-				<a href="intonation/intonation.html">Öva intonation</a>
-			</p>
+    		<div style="font-family: Lato; text-align:center">
+			<a href="intonation/intonation.html">Öva intonation</a>
 		</div>
 
 	</body>
-		<script src='index.js' ></script>
+		<script src='brutnaAckord.js' ></script>
 </html>
