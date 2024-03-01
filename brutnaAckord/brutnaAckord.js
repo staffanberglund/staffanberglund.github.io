@@ -50,6 +50,29 @@ const vf = new Factory({
 	},
 });
 
+let ackordtyper = ['maj7', 'm7', '7', 'm7b5' ];
+
+function check() {
+	var form = document.getElementById('ackordtyperForm');
+
+	for (var i = 0; i < ackordtyper.length; i++) {
+		var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		checkbox.name = "ackordtyp";
+		checkbox.value = ackordtyper[i];
+		checkbox.id = "ackordtyp" + i;
+		checkbox.checked = true; // Set the checkbox to be checked by default
+
+		var label = document.createElement('label')
+		label.htmlFor = "ackordtyp" + i;
+		label.appendChild(document.createTextNode(ackordtyper[i]));
+
+		form.appendChild(checkbox);
+		form.appendChild(label);
+		form.appendChild(document.createElement("br"));    
+	}
+}
+
 function ackord() {
 	document.getElementById('visaAckord').innerHTML = '';
 	document.getElementById('visaSkala').innerHTML = '';
@@ -60,9 +83,10 @@ function ackord() {
 	const a = Math.floor(Math.random() * 4 );
 	grundton = 55 + Math.floor((Math.random() * 11) + 1);
 	const tonart = Key.majorKey(pitchClass(midiToNoteName(grundton))).alteration;
-	ackordtyper = ['maj7', 'm7']//, '7', 'm7b5', 'dim7'];
-	let typ = ackordtyper[Math.floor(Math.random()*ackordtyper.length)];
 
+	let selectedTypes = Array.from(document.querySelectorAll('input[name="ackordtyp"]:checked')).map(checkbox => checkbox.value);
+
+	let typ = selectedTypes[Math.floor(Math.random()*selectedTypes.length)];
 
 	let brutetAckord = [ Note.fromMidi(grundton) , typ];
 
@@ -144,6 +168,7 @@ function chord() {
 //};
 
 window.onload = function() {
+	check();
     ackord();
 	//visaNoter();
 };
