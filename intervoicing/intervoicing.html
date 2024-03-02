@@ -5,21 +5,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 		<link REL="stylesheet" TYPE="text/css" href="../style.css">
-		<title>Brutna ackord</title>
+		<title>Staffans gehörsapp</title>
 		<script src='../im-tonal.js'></script>
 		<script src="../soundfont-player.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>
 	</head>
+
 	<body>
-		<form id="ackordtyperForm" style="font-family: Lato;">
+				<form id="ackordtyperForm" style="font-family: Lato;">
 			<!-- Checkboxes will be added here by JavaScript -->
 		</form>
 		<div class="kol" style="margin: auto">
-			<p style="text-align: center;" id='firstNote'>
-			    <button style="text-align: center;" class="button" id="firstNote">Första ton</button>
-			</p>
 			<p style="text-align: center;" id='chordButtonPar'>
-			    <button style="text-align: center;" class="button" id="chordButton">Facit</button>
+			    <button style="text-align: center;" class="button" id="chordButton">Spela</button>
+			</p>
+			<p style="text-align: center;" id='chordButtonNext'>
+			    <button style="text-align: center;" class="button" id="chordButtonNext">Lägg till ton</button>
+			</p>
+			<p style="text-align: center;" id='visaButton'>
+			    <button style="text-align: center;" class="button" id="visaButton">Facit</button>
 			</p>
 			<p style="text-align: center;" id='reload'>
 			    <button style="text-align: center;" class="button" id="reloadButton">Nytt ackord</button>
@@ -27,12 +31,13 @@
 			<p style="text-align: center;" id='visaAckord'> </p>
 		</div>
 
-		<div id="output" class="kol" style="margin: auto"></div>
+		<div id="output" class="kol" style="margin: auto">
 		<p style="text-align: center; margin: auto" id='visaSkala'> </p>
+</div>
     		<div style="font-family: Lato; text-align:center">
     		<a href="../index.html">Tillbaka till startsida</a>
 		</div>
 
 	</body>
-		<script src='brutnaAckord.js' ></script>
+		<script src='intervoicing.js' ></script>
 </html>
