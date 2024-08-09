@@ -8,6 +8,7 @@
 		<style> body { width:90vw; } </style>
 		<title>Intonation</title>
 		<script src='../im-tonal.js'></script>
+		<script src='../index.js'></script>
 		<script src="../soundfont-player.js"></script>
 		<!--<script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>-->
 	</head>
@@ -106,10 +107,10 @@
 	<br>
 	<div class="kol" style="margin: auto">
 	<p style="text-align: center;" id='chordButtonPar'>
-		<button style="text-align: center;" class="button" id="chordButton" onclick="chord()">Spela</button>
+		<button data-i18n-key="spela" style="text-align: center;" class="button" id="chordButton" onclick="chord()"></button>
 	</p>
 	<p style="text-align: center;">
-		<button style="text-align: center;" class="button" id="visaButton" onclick="togglePar()">Visa</button>
+		<button data-i18n-key="facit" style="text-align: center;" class="button" id="visaButton" onclick="togglePar()"></button>
 	</p>
 		<div id="visaAckord" style="display: none">
 			<p >
@@ -130,7 +131,7 @@
 		</p>
 		</div>
     		<div style="font-family: Lato; text-align:center">
-    		<a href="../index.html">Tillbaka till startsida</a>
+    		<a data-i18n-key="tillbaka" href="../index.html">Tillbaka till startsida</a>
 		</div>
 </body>
 	<script src='intonation.js' ></script>

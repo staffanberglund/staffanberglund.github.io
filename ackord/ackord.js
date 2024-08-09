@@ -143,7 +143,6 @@ async function visaNoter() {
 	}
 	
 
-	console.log('(' + ackVisa + ')' + '/w');
 	const score = vf.EasyScore();
 	const system = vf.System({x:15,y:0,width: 180});
 	system

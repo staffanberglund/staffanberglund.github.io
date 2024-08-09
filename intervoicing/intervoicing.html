@@ -7,35 +7,36 @@
 		<link REL="stylesheet" TYPE="text/css" href="../style.css">
 		<title>Staffans gehörsapp</title>
 		<script src='../im-tonal.js'></script>
+		<script src='../index.js'></script>
 		<script src="../soundfont-player.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.3/build/cjs/vexflow.js"></script>
 	</head>
 
 	<body>
-				<form id="ackordtyperForm" style="font-family: Lato;">
-			<!-- Checkboxes will be added here by JavaScript -->
-		</form>
+		<div style="font-size: 18px; line-height: 28px;">
+			<form id="ackordtyperForm" style="font-family: Lato;" > </form>
+		</div>
 		<div class="kol" style="margin: auto">
 			<p style="text-align: center;" id='chordButtonPar'>
-			    <button style="text-align: center;" class="button" id="chordButton">Spela</button>
+			    <button data-i18n-key="spela" style="text-align: center;" class="button" id="chordButton"></button>
 			</p>
 			<p style="text-align: center;" id='chordButtonNext'>
-			    <button style="text-align: center;" class="button" id="chordButtonNext">Lägg till ton</button>
+			    <button  data-i18n-key="addNote" style="text-align: center;" class="button" id="chordButtonNext"></button>
 			</p>
 			<p style="text-align: center;" id='visaButton'>
-			    <button style="text-align: center;" class="button" id="visaButton">Facit</button>
+			    <button data-i18n-key="facit" style="text-align: center;" class="button" id="visaButton"></button>
 			</p>
 			<p style="text-align: center;" id='reload'>
-			    <button style="text-align: center;" class="button" id="reloadButton">Nytt ackord</button>
+			    <button  data-i18n-key="nyttAckord" style="text-align: center;" class="button" id="reloadButton"></button>
 			</p>
-			<p style="text-align: center;" id='visaAckord'> </p>
+			<p style="text-align: center; min-height: 3.5em; margin: 0; line-height: 3.5em;" id='visaAckord'> </p>
 		</div>
 
 		<div id="output" class="kol" style="margin: auto">
-		<p style="text-align: center; margin: auto" id='visaSkala'> </p>
-</div>
-    		<div style="font-family: Lato; text-align:center">
-    		<a href="../index.html">Tillbaka till startsida</a>
+			<p style="text-align: center; margin: auto" id='visaSkala'> </p>
+		</div>
+    	<div style="font-family: Lato; text-align:center">
+    		<a data-i18n-key="tillbaka" href="../index.html"></a>
 		</div>
 
 	</body>

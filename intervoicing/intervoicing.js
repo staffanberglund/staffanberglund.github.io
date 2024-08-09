@@ -180,7 +180,7 @@ async function visaAckord() {
 
 	let grnd = brutetAckord_[0] == ack_[0] ? '' : '/' + ack_[0];
 
-	document.getElementById('visaAckord').innerHTML = '<br>' + brutetAckord_[0] + brutetAckord_[1] + grnd;
+	document.getElementById('visaAckord').innerHTML = brutetAckord_[0] + brutetAckord_[1] + grnd;
 
 //	document.getElementById('visaSkala').innerHTML = await '(slumpad skala: ' + bastonNote + ' ' + skalaVar + ')';
 	if (renderedBool == 0) {
